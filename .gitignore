@@ -1,3 +1,9 @@
 node_modules
 .env
-tokens
+/tokens
+/tokens/*
+tokens/
+
+
+ignore a pasta tokens
+
