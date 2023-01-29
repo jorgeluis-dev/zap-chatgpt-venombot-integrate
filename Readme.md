@@ -15,7 +15,7 @@ Este projeto é um exemplo de como criar um bot de WhatsApp utilizando a bibliot
 
 bashCopy code
 
-`git clone https://github.com/seu-usuario/seu-projeto.git` 
+`git clone https://github.com/jorgeluis-dev/zap-chatgpt-venombot-integrate.git` 
 
 2.  Instale as dependências
 
