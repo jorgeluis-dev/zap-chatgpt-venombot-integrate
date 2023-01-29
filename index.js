@@ -22,10 +22,10 @@ const openai = new OpenAIApi(configuration);
 
 const getDavinciResponse = async (clientText) => {
     const options = {
-        model: "text-davinci-003", // Modelo GPT a ser usado
-        prompt: clientText, // Texto enviado pelo usuário
-        temperature: 0.5, // Nível de variação das respostas geradas, 1 é o máximo
-        max_tokens: 100 // Quantidade de tokens (palavras) a serem retornadas pelo bot, 4000 é o máximo
+        model: "text-davinci-003", // GPT-3 model to be used
+        prompt: clientText, // User's text
+        temperature: 0.5, // Level of variation in generated responses, 1 is maximum
+        max_tokens: 100 // Number of tokens (words) to be returned by the bot, 4000 is the maximum
     }
 
     try {
@@ -42,9 +42,9 @@ const getDavinciResponse = async (clientText) => {
 
 const getDalleResponse = async (clientText) => {
     const options = {
-        prompt: clientText, // Descrição da imagem
-        n: 1, // Número de imagens a serem geradas
-        size: "1024x1024", // Tamanho da imagem
+        prompt: clientText, // Description of image
+        n: 1, // Number of images to be generated
+        size: "1024x1024", // Size of image
     }
 
     try {
@@ -67,12 +67,12 @@ const commands = (client, message) => {
         case iaCommands.davinci3:
             const question = message.text.substring(message.text.indexOf(" "));
             getDavinciResponse(question).then((response) => {
-                /*
-                 * Faremos uma validação no message.from
-                 * para caso a gente envie um comando
-                 * a response não seja enviada para
-                 * nosso próprio número e sim para 
-                 * a pessoa ou grupo para o qual eu enviei
+                 /*
+                 * We will do a validation on message.from
+                 * so that in case we send a command
+                 * the response is not sent to
+                 * our own number but rather to 
+                 * the person or group to whom I sent
                  */
                 client.sendText(message.from === process.env.BOT_NUMBER ? message.to : message.from, response)
             })
